@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  proxy:
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+    image: custom-compose-nginx
+    ports:
+      - '8060:80'
+
+  web:
+    image: httpd
+    ports: 
+      - '8050:80'
+    volumes:
+      - './html:/usr/local/apache2/htdocs/'
